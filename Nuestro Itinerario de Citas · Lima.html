@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuestro Itinerario de Citas · Lima</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff5f3;--card:#fffdfb;--ink:#4a2c3a;--soft:#8a6475;--accent:#d6537a;--frame:#e9a3b8;--chip:#fde3ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1822;--card:#37202c;--ink:#f8e6ec;--soft:#caa3b3;--accent:#ff8fb0;--frame:#8a4a62;--chip:#4a2a39}}
+:root[data-theme="dark"]{--bg:#2a1822;--card:#37202c;--ink:#f8e6ec;--soft:#caa3b3;--accent:#ff8fb0;--frame:#8a4a62;--chip:#4a2a39}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Quicksand",system-ui,sans-serif;line-height:1.55}
+main{max-width:760px;margin:0 auto;padding:28px 16px 60px}
+header{text-align:center;margin-bottom:28px}
+h1{font-family:"Dancing Script",cursive,serif;font-size:clamp(2.4rem,9vw,3.6rem);color:var(--accent);margin:0}
+header p{color:var(--soft);margin:6px 0 0}
+.day{margin-top:38px}
+.day h2{font-family:"Dancing Script",cursive,serif;font-size:2.1rem;margin:0;color:var(--accent)}
+.day .sub{color:var(--soft);margin:2px 0 14px}
+.card{background:var(--card);border:4px double var(--frame);border-radius:18px;padding:16px 18px;margin:0 0 16px;box-shadow:0 4px 14px rgba(214,83,122,.12)}
+.card h3{margin:0 0 4px;font-size:1.15rem}
+.num{display:inline-block;background:var(--accent);color:#fff;border-radius:50%;width:26px;height:26px;text-align:center;line-height:26px;font-size:.85rem;margin-right:8px}
+.row{color:var(--soft);font-size:.93rem;margin:3px 0}
+.note{margin:8px 0 0}
+.chip{display:inline-block;background:var(--chip);border-radius:20px;padding:2px 10px;font-size:.8rem;margin:8px 6px 0 0}
+a.map{display:inline-block;margin-top:10px;color:#fff;background:var(--accent);padding:7px 14px;border-radius:22px;text-decoration:none;font-weight:600;font-size:.9rem}
+footer{text-align:center;color:var(--soft);margin-top:40px;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Nuestro Itinerario de Citas 💕</h1>
+<p>Para Lucero, mi amorcito · Lima, paso a paso</p>
+<p style="font-size:.85rem">Horarios según Google Maps: conviene confirmarlos antes de salir.</p>
+</header>
+<div id="app"></div>
+<footer>Hecho con cariño para ir de la mano 🌷</footer>
+</main>
+<script>
+var days=[
+{t:"Día 1",s:"Centro histórico de Lima",e:"🏛️",d:"Casas antiguas, historia y fotos bonitas. Mejor de martes a sábado, para que todo esté abierto.",p:[
+{n:"Casa O’Higgins - PUCP",a:"Jr. de la Unión 554, Lima",h:"Mar–dom 10:00–20:00",x:"Casona histórica con exposiciones. Entrada libre.",la:-12.0476222,lo:-77.032545,t:["Gratis","Fotitos"]},
+{n:"Museo de Artes y Tradiciones Populares “Luis Repetto Málaga” - PUCP",a:"Dentro de Casa O’Higgins, Jr. de la Unión 554",h:"Todos los días 10:00–20:00",x:"Está en el mismo edificio: arte popular peruano y piezas amazónicas. Se visitan los dos en una sola parada.",la:-12.0476285,lo:-77.0325407,t:["Gratis","Mismo edificio"]},
+{n:"Museo del Convento de San Francisco y Catacumbas",a:"Jr. Áncash, Lima",h:"Todos los días 9:00–18:00",x:"Convento del siglo XVII y las catacumbas. Dentro de la visita guiada no se permiten fotos, así que es para guardarlo en el recuerdo.",la:-12.0452978,lo:-77.0274438,t:["Visita guiada","Sin fotos"]},
+{n:"Casa Fernandini",a:"Jirón Ica 400, Lima",h:"Todos los días 9:30–18:30",x:"Casa de 1913 con muebles de época y un ascensor Otis original.",la:-12.0450816,lo:-77.0350917,t:["Arquitectura","Tour corto"]},
+{n:"Museo Casa de la Riva",a:"Jirón Ica 426, Lima",h:"Sin horario en Google; hay que tocar y el cuidador abre",x:"Mansión del siglo XVIII, a pasos de Casa Fernandini. Reseñas mencionan entrada de unos S/15 y que conviene ir antes de la noche.",la:-12.0447887,lo:-77.0353551,t:["Tocar el timbre","Confirmar antes"]},
+{n:"Museo de Arte Italiano",a:"Av. Paseo de la República 250, Lima",h:"Mar–sáb 9:30–16:30 (cerrado dom y lun)",x:"Un museo pequeñito con mosaicos preciosos en la fachada. Cierre perfecto del día.",la:-12.0584834,lo:-77.0367178,t:["Mosaicos","Cierra temprano"]}]},
+{t:"Día 2",s:"Parque de la Exposición",e:"🎨",d:"Tres paradas casi vecinas. Ir de martes a viernes, o domingo, porque el MALI cierra lunes y Mariátegui cierra sábado.",p:[
+{n:"Museo de Arte de Lima - MALI",a:"Parque de la Exposición, Av. 9 de Diciembre 125, Lima",h:"Mar–vie 10:00–18:00 · sáb 10:00–17:00 · dom 10:00–18:00",x:"Tres mil años de arte peruano en un palacio hermoso. Hay lockers en el lugar. Reseñas mencionan entrada de unos S/40.",la:-12.0606647,lo:-77.0372521,t:["Arte","Lockers"]},
+{n:"Jardín Japonés en el Parque de la Exposición",a:"Parque de la Exposición, Lima (código Plus WXP7+PQG)",h:"Sin horario en Google",x:"Un paseo tranquilo entre museos. Calma y fotos bonitas.",la:-12.063177,lo:-77.0355441,t:["Paseo","Fotitos"]},
+{n:"Museo Carlos Mariátegui",a:"Av. Washington 1946, Lima",h:"Lun–vie y dom 9:00–17:00 (cerrado sábado)",x:"La casa donde vivió Mariátegui entre 1925 y 1930. Es pequeño, íntimo y de entrada libre.",la:-12.0639229,lo:-77.038994,t:["Gratis","Historia"]}]},
+{t:"Día 3",s:"Miraflores al atardecer",e:"🌅",d:"Del museo al parque con vista al mar, y de ahí a una cena con música de los Beatles.",p:[
+{n:"Lugar de la Memoria, la Tolerancia y la Inclusión Social - LUM",a:"Bajada San Martín 151, Miraflores",h:"Mar–dom 10:00–18:00 (cerrado lunes)",x:"Museo sobre el periodo de violencia 1980–2000. Entrada libre, piden registrar un documento de identidad. Prepárense: hay contenido fuerte.",la:-12.1100565,lo:-77.0539453,t:["Gratis","Llevar DNI"]},
+{n:"Parque Chino de Miraflores",a:"Malecón Cisneros, Miraflores",h:"Casi todos los días 9:00–20:30",x:"Puentes rojos, estanques con peces y vista al Pacífico. Ideal para las fotitos al atardecer.",la:-12.1218863,lo:-77.0433198,t:["Atardecer","Fotitos"]},
+{n:"Liverpool Restobar",a:"Av. Grau 192, Miraflores",h:"Lun–jue 12:00–24:00 · vie–sáb 12:00–01:00 · dom 12:00–17:00",x:"Restobar temático de los Beatles con comida peruana. Una reseña cuenta que una vez al mes toca una banda de rock de los 80 y 90, así que conviene preguntar por la agenda.",la:-12.1200292,lo:-77.034912,t:["The Beatles","Cena","Tel. +51 998 346 046"]}]},
+{t:"Día 4",s:"Cultura japonesa y animalitos",e:"🦒",d:"Un día más relajado, mejor de lunes a sábado para que la Asociación esté abierta.",p:[
+{n:"Asociación Peruano Japonesa",a:"Av. Gregorio Escobedo 803, Jesús María",h:"Lun–vie 9:30–18:00 · sáb 9:00–13:00 (cerrado dom)",x:"Para ver el museo de la historia japonesa en el Perú, la librería y la galería. Conviene revisar su cartelera por si hay alguna obra para ver.",la:-12.0878813,lo:-77.0556593,t:["Museo","Ver cartelera"]},
+{n:"Parque de las Leyendas",a:"Av. 580 (Av. Las Leyendas), San Miguel",h:"Todos los días 9:00–17:00",x:"Zoológico enorme con jardín botánico incluido. Reseñas recomiendan llegar temprano y separar buen tiempo.",la:-12.0679632,lo:-77.0870217,t:["Animalitos","Llegar temprano"]},
+{n:"Parque de la Imaginación y el acuario",a:"San Miguel (confirmar dirección exacta y horarios antes de ir)",h:"Por confirmar",x:"No pude verificar este lugar ni el acuario, así que miren su ubicación y horarios en Google Maps antes de salir.",q:"Parque de la Imaginación San Miguel Lima",t:["Por confirmar","Fotitos"]}]},
+{t:"Día 5",s:"Noche de antojos y música",e:"🎸",d:"El día para comer rico, brindar y bailar. Cada lugar se elige según el plan de ese día.",p:[
+{n:"Infables · Jockey Plaza",a:"Jockey Plaza, Av. Javier Prado Este 4200, Santiago de Surco",h:"Por confirmar",x:"No encontré con certeza este lugar, así que ábranlo en el mapa y confirmen que sea el correcto antes de ir.",q:"Infables Jockey Plaza Lima",t:["Por confirmar"]},
+{n:"Barra libre de makis y alitas",a:"Por elegir",h:"—",x:"Busquen en Google Maps “barra libre makis alitas” cerca de su zona y revisen reseñas y precios.",q:"barra libre makis y alitas Lima",t:["Por elegir"]},
+{n:"Barra libre de carnes",a:"Por elegir",h:"—",x:"Una parrilla libre para ir con hambre de verdad.",q:"barra libre de carnes Lima",t:["Por elegir"]},
+{n:"Barra libre de traguitos (el de Lu y Marcelo)",a:"Por confirmar con Lu",h:"—",x:"Pregúntale a Lu el nombre del lugar y guárdalo aquí.",t:["Preguntar a Lu"]},
+{n:"Tributo y concierto de banda nicho",a:"Según la agenda",h:"—",x:"Tributo a Enanitos Verdes o The Beatles, y un concierto de banda nicho. Revisen las carteleras de Teleticket y las redes de los locales para ver qué toca cuándo.",q:"tributo Enanitos Verdes Beatles Lima",t:["Revisar agenda","Música"]}]}
+];
+var app=document.getElementById("app"),out="";
+days.forEach(function(d){
+out+='<section class="day"><h2>'+d.e+" "+d.t+" · "+d.s+'</h2><p class="sub">'+d.d+"</p>";
+d.p.forEach(function(p,i){
+var u=p.la?("https://www.google.com/maps/search/?api=1&query="+p.la+","+p.lo):(p.q?("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.q)):"");
+out+='<article class="card"><h3><span class="num">'+(i+1)+"</span>"+p.n+'</h3><div class="row">📍 '+p.a+'</div><div class="row">🕒 '+p.h+'</div><p class="note">'+p.x+"</p>";
+(p.t||[]).forEach(function(c){out+='<span class="chip">'+c+"</span>"});
+if(u){out+='<br><a class="map" href="'+u+'" target="_blank" rel="noopener">Ver ubicación en Maps</a>'}
+out+="</article>"});
+out+="</section>"});
+app.innerHTML=out;
+</script>
+</body>
+</html>
